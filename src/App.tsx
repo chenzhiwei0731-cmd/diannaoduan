@@ -240,6 +240,32 @@ const AuroraBackground = () => (
   </div>
 );
 
+const AppLogo = ({ size = 24, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 482 482" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
+    <g clipPath="url(#clip0_127_268)">
+      <path d="M378.445 0H103.555C46.363 0 0 46.363 0 103.555V378.445C0 435.637 46.363 482 103.555 482H378.445C435.637 482 482 435.637 482 378.445V103.555C482 46.363 435.637 0 378.445 0Z" fill="url(#paint0_linear_127_268)"/>
+      <path d="M241 128.507C241 128.507 363.406 -5.28128 452.11 101.747C540.814 208.776 241 422.837 241 422.837C241 422.837 -58.8096 208.776 29.8897 101.747C118.594 -5.28128 241 128.507 241 128.507Z" fill="url(#paint1_radial_127_268)"/>
+      <path d="M220.868 138.994H261.127C264.265 138.994 265.952 140.563 266.187 143.701L286.771 418.13C287.007 421.268 285.555 422.837 282.417 422.837H199.583C196.445 422.837 194.994 421.268 195.229 418.13L215.808 143.701C216.043 140.563 217.73 138.994 220.868 138.994Z" fill="#32ABFD"/>
+      <path d="M269.388 103.512H212.617C210.168 103.512 208.183 105.498 208.183 107.946V125.687C208.183 128.136 210.168 130.121 212.617 130.121H269.388C271.837 130.121 273.822 128.136 273.822 125.687V107.946C273.822 105.498 271.837 103.512 269.388 103.512Z" fill="#32ABFD"/>
+      <path d="M244.954 63.8697L274.302 98.8053C276.938 101.943 276.687 103.512 273.549 103.512H208.451C205.313 103.512 205.062 101.943 207.698 98.8053L237.046 63.8697C239.682 60.7317 242.318 60.7317 244.954 63.8697Z" fill="#32ABFD"/>
+      <path d="M241 124.802C241 124.802 253.417 116.819 253.417 110.61C253.417 105.287 247.209 103.512 241 109.726C234.791 103.517 228.583 105.292 228.583 110.61C228.583 116.819 241 124.802 241 124.802Z" fill="white"/>
+    </g>
+    <defs>
+      <linearGradient id="paint0_linear_127_268" x1="41.2237" y1="28.5395" x2="448.931" y2="482" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#D4DAFF"/>
+        <stop offset="1" stopColor="#ACDFFF"/>
+      </linearGradient>
+      <radialGradient id="paint1_radial_127_268" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240.868 240.759) scale(226.982 180.869)">
+        <stop stopColor="#FFC107" stopOpacity="0.9"/>
+        <stop offset="1" stopColor="#FFC107" stopOpacity="0"/>
+      </radialGradient>
+      <clipPath id="clip0_127_268">
+        <rect width="482" height="482" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
 const Sidebar = ({ activeTab, onTabChange }: { activeTab: string, onTabChange: (id: PageId) => void }) => {
   const tabs = [
     { id: 'home', icon: Home, label: '首页' },
@@ -252,9 +278,7 @@ const Sidebar = ({ activeTab, onTabChange }: { activeTab: string, onTabChange: (
   return (
     <div className="w-[240px] h-full bg-white/80 dark:bg-[#2A2D34]/90 backdrop-blur-2xl border-r border-slate-200 dark:border-slate-800 flex flex-col py-10 px-6 z-50 relative">
       <div className="flex items-center gap-3 mb-16 px-2">
-        <div className="w-10 h-10 bg-gradient-to-br from-[#89CFF0] to-[#E6E6FA] dark:from-indigo-500 dark:to-purple-600 rounded-xl flex items-center justify-center shadow-sm">
-          <Leaf size={24} className="text-white" />
-        </div>
+        <AppLogo size={40} className="drop-shadow-sm" />
         <span className="text-xl font-bold text-[#2A2D34] dark:text-slate-100">心港驿站</span>
       </div>
       
@@ -303,9 +327,7 @@ const LoginView = ({ onLogin, onNavigate }: { onLogin: () => void, onNavigate: (
   <div className="flex-1 flex flex-col relative min-h-0 transition-colors duration-300 px-8 justify-center z-10 items-center">
     <div className="w-full max-w-md bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-12 rounded-[40px] shadow-2xl border border-white/50 dark:border-slate-800">
       <div className="text-center mb-12">
-        <div className="w-24 h-24 bg-gradient-to-br from-[#89CFF0] to-[#E6E6FA] dark:from-indigo-500 dark:to-purple-600 rounded-[32px] mx-auto mb-8 shadow-lg flex items-center justify-center">
-          <Leaf size={48} className="text-white" />
-        </div>
+        <AppLogo size={96} className="mx-auto mb-8 drop-shadow-xl dark:drop-shadow-none" />
         <h1 className="text-4xl font-bold text-[#2A2D34] dark:text-slate-100 mb-4 tracking-tight">欢迎回到心港驿站</h1>
         <p className="text-lg text-[#5D6979] dark:text-slate-400">继续你的心灵疗愈之旅</p>
       </div>
@@ -391,7 +413,10 @@ const HomeView = ({ onNavigate }: { onNavigate: (id: PageId) => void }) => {
   return (
     <div className="flex-1 flex flex-col relative min-h-0 transition-colors duration-300">
       <div className="h-[80px] px-8 flex items-center justify-between relative z-10 backdrop-blur-md bg-white/10 dark:bg-slate-900/50 border-b border-white/20 dark:border-slate-800/50">
-        <span className="text-[#2A2D34] dark:text-slate-100 font-medium text-2xl">心港驿站</span>
+        <div className="flex items-center gap-3">
+          <AppLogo size={32} className="drop-shadow-sm" />
+          <span className="text-[#2A2D34] dark:text-slate-100 font-medium text-2xl">心港驿站</span>
+        </div>
         <div className="flex gap-4">
           <button onClick={() => onNavigate('mood-checkin')} className="w-10 h-10 rounded-full bg-white/40 dark:bg-slate-800/60 border border-white/20 dark:border-slate-700/50 flex items-center justify-center hover:bg-white/60 transition-colors">
             <Sun size={20} className="text-amber-400" />
